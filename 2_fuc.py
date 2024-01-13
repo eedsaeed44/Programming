@@ -1,7 +1,7 @@
 ###*** Code For do two functions ***###
 #* One : Replace string
 #* Two : Getting just uniqe values
-
+import sys
 file = input("Enter file name : ")
 
 try:
@@ -18,7 +18,7 @@ after = 0
 word_replace = input("enter the the word you want to reblace: ")
 word_put = input("enter the the word you want to put: ")
 for line in handle :
-    line = line.rstrip()
+    line = line.strip()
     before += 1
     line.replace(word_replace, word_put)
     urls.append(line)
@@ -26,7 +26,7 @@ for line in handle :
 #* Two : Getting just uniqe values
 uniqe_values = []
 for url in urls:
-    url = url.rstrip()
+    url = url
     if url in uniqe_values:
         continue
     uniqe_values.append(url)
@@ -34,6 +34,10 @@ for url in urls:
 for n in uniqe_values:
     print(n)
     after += 1
+    with open('all.txt', 'a') as f:
+        sys.stdout = f
+        print(n)
+        sys.stdout = sys.__stdout__
 
 print(line)
 

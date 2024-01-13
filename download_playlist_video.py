@@ -20,9 +20,6 @@ print(f"There are {N} videos in this playlist.\nLets Download all {N} videos")
 for i, link in enumerate(PlayListLinks):
 
     yt = YouTube(link)
-    d_video = yt.streams.filter(progressive=True, file_extension='mp4').order_by(
-        'resolution').desc().first()
+    d_video = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
     d_video.download(SAVE_PATH)
-    print(i+1, ' Video>>{ ' + yt.title + ' } is Downloaded.')
-
-# https://www.youtube.com/playlist?list=PLouZFzpamX32CXPEi2f18mHFRqqNtsc34        ورك شوب
+    print(i+1, ' Video>>{ '+ yt.title +' } is Downloaded.')

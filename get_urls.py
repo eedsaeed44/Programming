@@ -1,6 +1,7 @@
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 import ssl
+import sys
 
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
@@ -14,5 +15,12 @@ tags = soup('a')
 for tag in tags:
     print(tag.get('href', None))
     count += 1
-print(f"count : {count}")
+    with open('bnb.txt', 'a') as f:
+        sys.stdout = f
+        print(tag.get('href', None))
+        sys.stdout = sys.__stdout__
+        
 
+
+print(f"count : {count}")
+print(f"The sorce page is: {url}")
